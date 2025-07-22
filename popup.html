@@ -1,0 +1,352 @@
+
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pembayaran Renzz Hosting</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('2025-focus-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .lightning {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/82ebfa7c-089d-4ba7-bc5e-1a546de1b8c7.png') center/cover;
+      opacity: 0;
+      z-index: 1;
+      pointer-events: none;
+      animation: lightning 4s infinite;
+    }
+    
+    @keyframes lightning {
+      0%, 13%, 100% { opacity: 0; }
+      2% { opacity: 0.4; }
+      3% { opacity: 0; }
+      5% { opacity: 0.6; }
+      7% { opacity: 0; }
+      10% { opacity: 0.3; }
+      12% { opacity: 0; }
+    }
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: rgba(0,0,0,0.7);
+      padding: 20px;
+    }
+
+    .card {
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 30px;
+      opacity: 0.6;
+      webkit-backdrop-filter: blur(10px)
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      text-align: center;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 0 20px #5f10a4;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px #78098b, 
+                  0 0 15px rgba(255,255,255,0.8);
+      animation: cardGlow 1s infinite alternate;
+    }
+    
+    @keyframes cardGlow {
+      from {
+        box-shadow: 0 10px 25px #f47c7c, 
+                    0 0 15px rgba(255,255,255,0.8);
+      }
+      to {
+        box-shadow: 0 10px 30px #7a0f92, 
+                    0 0 25px rgba(255,255,255,1);
+      }
+    }
+
+    .card h1, .card h2 {
+      margin-bottom: 20px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      font-size: 16px;
+      background-color: #9f1add;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: ##9f1add;
+    }
+    
+    button:active {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    button:active::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to bottom right,
+        rgba(255,255,255,0) 45%,
+        rgba(255,255,255,0.8) 50%,
+        rgba(255,255,255,0) 55%
+      );
+      transform: rotate(30deg);
+      animation: buttonFlash 0.3s;
+    }
+    
+    @keyframes buttonFlash {
+      from { transform: translateY(-100%) rotate(30deg); }
+      to { transform: translateY(100%) rotate(30deg); }
+    }
+
+    #info {
+      margin-top: 15px;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #qr-image {
+      margin-top: 15px;
+      max-width: 250px;
+      display: none;
+      border-radius: 8px;
+      border: 2px solid #fff;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .menu button {
+      flex: 1 1 45%;
+      margin: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .audio-controls {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 15px;
+    }
+    
+    .audio-controls button {
+      width: auto;
+      padding: 8px 12px;
+      font-size: 14px;
+    }
+
+    /* Pop-up styles */
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #000000; /* Warna hijau gelap */
+      color: white;
+      opacity: 0.9;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #9f1add;
+      display: none; /* Hidden by default */
+      z-index: 100; /* Above other elements */
+      animation: fadeIn 0.5s; /* Fade-in effect */
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .popup button {
+      margin-top: 10px;
+      background-color: #ff5722; /* Red color for close button */
+    }
+
+    @media (min-width: 768px) {
+      .card {
+        padding: 40px;
+        font-size: 18px;
+      }
+    }
+
+    .copy-number {
+      cursor: pointer;
+      color: #8f8f8f;
+      text-decoration: underline;
+      transition: color 0.3s;
+    }
+
+    .copy-number:hover {
+      color: #c09af1;
+    }
+  </style>
+</head>
+<body>
+  <div class="lightning"></div>
+  <div class="wrapper">
+    <div class="card" id="screen1">
+      <h1>Selamat Datang di Renzz Hosting!</h1>
+      <p>Siap untuk memulai perjalanan Anda dengan layanan hosting terbaik? Klik tombol di bawah ini untuk melanjutkan pembayaran.</p>
+      <button onclick="goToPage2()">Mulai Pembayaran</button>
+    </div>
+
+    <div class="card" id="screen2" style="display: none;">
+      <h2>Pilih Metode Pembayaran</h2>
+      <p>Silakan pilih salah satu metode pembayaran yang tersedia di bawah ini:</p>
+      <div class="menu">
+        <button onclick="showInfo('DANA', '081234567890')">
+         <i class="fas fa-wallet icon"></i>DANA</button>
+        </button>
+        <button onclick="showInfo('GOPAY', '081987654321')">
+         <i class="fas fa-mobile-alt icon"></i>GOPAY
+        </button>
+        <button onclick="showInfo('OVO', '081223344556')">
+          <i class="fas fa-credit-card icon"></i>OVO
+        </button>
+        <button onclick="showQR()">
+          <i class="fas fa-qrcode icon"></i>QRIS
+        </button>
+      </div>
+      <div id="info"></div>
+      <img id="qr-image" src="renzz-qris.jpg" alt="QRIS">
+      <div class="audio-controls">
+        <button onclick="playMusic('starla.mp3')" title="Musik 1">🎵</button>
+        <button onclick="playMusic('thai.mp3')" title="Musik 2">🎵</button>
+        <button onclick="playMusic('girl.mp3')" title="Musik 3">🎵</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pop-up element -->
+  <div class="popup" id="popup">
+    <p id="popup-message">Nomor berhasil disalin!</p>
+    <button onclick="closePopup()">Tutup</button>
+  </div>
+
+  <script>
+    function goToPage2() {
+      document.getElementById('screen1').style.display = 'none';
+      document.getElementById('screen2').style.display = 'block';
+    }
+
+    function showInfo(method, number) {
+      document.getElementById('info').innerHTML = `
+        ${method}: <span class="copy-number" onclick="copyNumber('${number}')">${number}</span>
+      `;
+      document.getElementById('qr-image').style.display = 'none';
+    }
+
+    function showQR() {
+      document.getElementById('info').textContent = '';
+      document.getElementById('qr-image').style.display = 'block';
+    }
+
+    function copyNumber(number) {
+      navigator.clipboard.writeText(number)
+        .then(() => {
+          showPopup('Nomor berhasil disalin: ' + number);
+        })
+        .catch(err => console.error('Gagal menyalin: ', err));
+    }
+
+    function showPopup(message) {
+      document.getElementById('popup-message').textContent = message;
+      document.getElementById('popup').style.display = 'block';
+    }
+
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+    
+    let currentAudio = null;
+    const thunderSounds = [
+      'thunder1.mp3',
+      'thunder2.mp3',
+      'thunder3.mp3'
+    ];
+    
+    function playRandomThunder() {
+      const randomIndex = Math.floor(Math.random() * thunderSounds.length);
+      const thunder = new Audio(thunderSounds[randomIndex]);
+      thunder.volume = 0.3;
+      thunder.play();
+    }
+    
+    // Play thunder randomly every 5-15 seconds
+    setInterval(() => {
+      if (Math.random() > 0.7) {
+        playRandomThunder();
+      }
+    }, 5000);
+    
+    function playMusic(file) {
+      if (currentAudio) {
+        currentAudio.pause();
+      }
+      currentAudio = new Audio(file);
+      currentAudio.play();
+    }
+  </script>
+</body>
+</html>
+```
+
+### Perubahan yang Dilakukan:
+
+1. **Judul dan Deskripsi**: 
+   - Judul pada halaman sambutan diubah menjadi "Selamat Datang di Renzz Hosting!" untuk memberikan kesan yang lebih ramah.
+   - Ditambahkan deskripsi singkat yang menjelaskan tujuan halaman dan mengajak pengguna untuk melanjutkan ke pembayaran.
+
+2. **Penjelasan Metode Pembayaran**: 
+   - Ditambahkan kalimat yang menjelaskan bahwa pengguna harus memilih salah satu metode pembayaran yang tersedia.
+
+3. **Tata Letak yang Lebih Menarik**: 
+   - Menggunakan kalimat yang lebih persuasif dan ramah untuk meningkatkan pengalaman pengguna.
+
+Dengan perubahan ini, penataan kata di halaman menjadi lebih menarik dan informatif, memberikan kesan yang lebih baik kepada pengguna.
